@@ -19,7 +19,7 @@ Player::Player(Maze* maze, Room p, std::string name, char sprite, const bool tba
 
 	// Discover the starting room
 	m_discoveredRooms.push_front(p);
-	m_lookingPaper.push(p);
+	m_lookingPaper.enqueue(p);
 }
 
 //  stuck() 
@@ -39,7 +39,7 @@ bool Player::foundExit() const {
 //      If m_lookingPaper is empty then return an invalid room.
 Room Player::getTargetRoom() const {
 	if (m_lookingPaper.empty()) return Room(-1, -1);
-	return m_lookingPaper.top();
+	return m_lookingPaper.front();
 }
 
 // discovered

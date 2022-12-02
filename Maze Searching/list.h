@@ -108,21 +108,6 @@ List<Type>& List<Type>::operator=(const List<Type>& other) {
 		}
 	}
 	return *this;
-	/*if (this != &other) {
-		DLNode* p = m_front;
-		while (p != nullptr) {
-			DLNode* temp = p->next();
-			delete p;
-			p = temp;
-		}
-		if (other.empty()) return *this;
-		DLNode* other_p = other.m_front;
-		while (other_p != nullptr) {
-			push_rear(other_p->value());
-			other_p = other_p->next();
-		}
-	}
-	return *this;*/
 }
 
 //List Dtor

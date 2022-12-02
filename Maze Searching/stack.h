@@ -41,45 +41,31 @@ Stack<Item>::Stack():m_list() {}
 
 template<typename Item>
 void Stack<Item>::push(Item item) {
-
-	/*  TODO  */
-
+	m_list.push_rear(item);
 }
 
 
 template<typename Item>
 void Stack<Item>::pop() {
-	
-	/*  TODO  */
-
+	m_list.pop_front();
 }
 
 
 template<typename Item>
 bool Stack<Item>::empty() const {
-	
-	/*  TODO  */
-
-	return false;
+	return m_list.empty();
 }
 
 
 template<typename Item>
 Item Stack<Item>::top() const {
-
-	/*  TODO  */
-	
-	Item RETURN_VALUE_REQUIRED_TO_COMPILE;
-
-	return RETURN_VALUE_REQUIRED_TO_COMPILE;
+	return m_list.front();
 }
 
 
 template<typename Item>
 void Stack<Item>::print() const {
-
-	/* TODO */
-
+	m_list.print();
 }
 
 

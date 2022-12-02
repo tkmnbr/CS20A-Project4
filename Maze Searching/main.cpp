@@ -1,14 +1,14 @@
 // DEFINE YOUR RUN
-#define RUN02
+#define RUN01
 
-//#ifdef RUN01
+#ifdef RUN01
 #include"studentinfo.h"
 #include<string>
 using std::string;
 #include"stack.h"
 #include"queue.h"
 
-int main2() {
+int main() {
 
 
 
@@ -43,8 +43,7 @@ int main2() {
 
 	return 0;
 }
-
-//#elif defined(RUN02) //Test the game
+#elif defined(RUN02) //Test the game
 
 
 #include"game.h"
@@ -60,7 +59,7 @@ int main() {
 
 	return 0;
 }
-//#else
+#else
 
 
-//#endif
+#endif
