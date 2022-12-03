@@ -109,16 +109,59 @@ void Player::say() {
 //		Make sure the STATE::LOOK aspect compiles and works first.
 void Player::update() {
 
-	/* TODO */
-
-	// Set by the settings file, if BACKTRACKENABLED is false, then
-	// your program should behave exactly as seen in the slides or
-	// example executables (with teleporting).
-	// if(BACKTRACKENABLED) { ... code relating to backtracking 
 	if (BACKTRACKENABLED) {
-
+		
 	}
 	else {
+		//get the current pos
+		//mark it as discovered
+		//record curr pos 
+		//m_lookingPaper.dequeu()
+		//if next room is exit, then state EXIT
+
+		//Room west(x-1, y)
+		//Room east(x+1, y)
+		//Room north(x, y-1)
+		//Room south(x, y+1)
+
+		//if west is open and not discovered, m_lookingPaper.enqueue(west) and m_discoveredRoom.pushfront(west)
+		//...
+		if (m_lookingPaper.empty()) {
+			state(State::NOEXIT);
+			return;
+		}
+		Room pos = m_lookingPaper.front();
+		if (maze()->foundExit(pos)) {
+			state(State::EXIT);
+			return;
+		}
+		m_lookingPaper.dequeue();
+		move(pos);
+
+		Room west = Room(pos.x()-1, pos.y());
+		Room east = Room(pos.x()+1, pos.y());
+		Room north = Room(pos.x(), pos.y()-1);
+		Room south = Room(pos.x(), pos.y()+1);
+
+		if (maze()->open(west) and !discovered(west)) {
+			m_lookingPaper.enqueue(west);
+			m_discoveredRooms.push_front(west);
+		}
+
+		if (maze()->open(east) and !discovered(east)) {
+			m_lookingPaper.enqueue(east);
+			m_discoveredRooms.push_front(east);
+		}
+
+		if (maze()->open(north) and !discovered(north)) {
+			m_lookingPaper.enqueue(north);
+			m_discoveredRooms.push_front(north);
+		}
+
+		if (maze()->open(south) and !discovered(south)) {
+			m_lookingPaper.enqueue(south);
+			m_discoveredRooms.push_front(south);
+		}
 
 	}
 

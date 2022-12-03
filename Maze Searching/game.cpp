@@ -115,7 +115,7 @@ Game::~Game() {
 void Game::run(){
 	std::string teleportList;
 	int num_teleport = 0;
-	m_showSteps = true;
+	m_showSteps = false;
 	// Game loop
 	//bool teleported = false;
 	int teleportIter = 0;
@@ -126,26 +126,24 @@ void Game::run(){
 		// Clear the canvas to draw new scene
 		clearScreen();
 
-		m_maxSteps++;
-
-		if (sqrDist(curr, next)>1) {
-			//teleported = true;
-			teleportList += "Teleporting at step: " + std::to_string(teleportIter) + "\n";
+		if (sqrDist(curr, next) > 1) {
 			teleportIter = m_maxSteps;
+			teleportList += " " + std::to_string(teleportIter);
 			num_teleport++;
 		}
-
+		
+		
+		
+		
+		
 		if (m_showSteps) {
+
 			std::cout << "Step: " << m_maxSteps
 				<< ", Total Player::Update Runtime: " << m_maze->getPlayerUpdateRunTime()
 				<< ", Runtime/Step: " << m_maze->getPlayerUpdateRunTime() / m_maxSteps << std::endl;
-			std::cout << teleportList;
+			std::cout << "Teleported at steps: "<< teleportList <<"\n";
 			std::cout << "Teleported: " << num_teleport << " times. " << std::endl;
-			//if (teleported == true) {
-			//	
-				//std::cout << teleportList;
-			//	teleported = false;
-			//}
+			
 		}
 		m_maze->draw();
 		
@@ -195,12 +193,20 @@ void Game::run(){
 			delay(m_delay);
 		}
 		
+	
+
+	
+
 		m_maze->update();
 		m_maze->interact();
 
+		
+
 		curr = next;
 		next = m_maze->player()->room();
-		
+
+
+		m_maxSteps++;
 		
 	}
 } 
